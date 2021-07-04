@@ -1,20 +1,20 @@
 import requests
 import PySimpleGUI as sg
 
-def trainSchedule(train_number): #edit the url's train_number with number
-    url='http://indianrailapi.com/api/v2/TrainSchedule/apikey/30c382602bfa67c8a7c580e6cfe2becb/TrainNumber/{}'.format(train_number)
-    data=requests.get(url)
-    data=data.json()
-    return(data)
-
 def liveStatus(train_number,date):
-    url="http://indianrailapi.com/api/v2/livetrainstatus/apikey/<apikey>/trainnumber/{}/date/{}/".format(train_number,date)
+    url="http://indianrailapi.com/api/v2/livetrainstatus/apikey/30c382602bfa67c8a7c580e6cfe2becb/trainnumber/{}/date/{}/".format(train_number,date)
     data=requests.get(url)
     data=data.json()
     return(data)
 
 def Pnr(pnrnumber):
-    url="http://indianrailapi.com/api/v2/PNRCheck/apikey/<apikey>/PNRNumber{}/".format(pnrnumber)
+    url="http://indianrailapi.com/api/v2/PNRCheck/apikey/30c382602bfa67c8a7c580e6cfe2becb/PNRNumber{}/".format(pnrnumber)
+    data=requests.get(url)
+    data=data.json()
+    return(data)
+
+def trainSchedule(train_number): #edit the url's train_number with number
+    url='http://indianrailapi.com/api/v2/TrainSchedule/apikey/30c382602bfa67c8a7c580e6cfe2becb/TrainNumber/{}'.format(train_number)
     data=requests.get(url)
     data=data.json()
     return(data)
