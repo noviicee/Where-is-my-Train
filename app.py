@@ -1,14 +1,22 @@
 import requests
 import PySimpleGUI as sg
 
-def trainSchedule(number):
-    train_number=input("Enter the train number")
-    fetchData(train_number)
-
-def fetchData(number): #edit the url's train_number with number
-    url='http://indianrailapi.com/api/v2/TrainSchedule/apikey/<apikey>/TrainNumber/{}'.format(number)
+def trainSchedule(train_number): #edit the url's train_number with number
+    url='http://indianrailapi.com/api/v2/TrainSchedule/apikey/30c382602bfa67c8a7c580e6cfe2becb/TrainNumber/{}'.format(train_number)
     data=requests.get(url)
-    data=data.json
+    data=data.json()
+    return(data)
+
+def liveStatus(train_number,date):
+    url="http://indianrailapi.com/api/v2/livetrainstatus/apikey/<apikey>/trainnumber/{}/date/{}/".format(train_number,date)
+    data=requests.get(url)
+    data=data.json()
+    return(data)
+
+def Pnr(pnrnumber):
+    url="http://indianrailapi.com/api/v2/PNRCheck/apikey/<apikey>/PNRNumber{}/".format(pnrnumber)
+    data=requests.get(url)
+    data=data.json()
     return(data)
 
 sg.FlexForm("Check your train's route")
@@ -47,15 +55,16 @@ while True:
                 break
             else:
                 if values['-INPUT-']=='1':
-                    window['-OUTPUT-'].update("Live Status") 
+                    res=liveStatus(number['-INPUT-'])
+                    window['-OUTPUT-'].update(res) 
                     
                 elif values['-INPUT-']=='2':
-                    window['-OUTPUT-'].update('PNR')
-                else:
-                    res=fetchData(number['-INPUT-'])
+                    res=Pnr(number['-INPUT-'])
                     window['-OUTPUT-'].update(res)
-                    window['-OUTPUT-'].update('Route: '+res)
 
+                else:
+                    res=trainSchedule(number['-INPUT-'])
+                    window['-OUTPUT-'].update(res)
 
         # Finish up by removing from the screen
         #Layout-2

@@ -1,3 +1,7 @@
+"""This is the main python file.
+It is the core structure of the code being used in the application.
+"""
+
 import requests
 
 class IRCTC:
