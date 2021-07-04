@@ -1,21 +1,19 @@
 import requests
 import PySimpleGUI as sg
 
+def trainSchedule(number):
+    train_number=input("Enter the train number")
+    fetchData(train_number)
+
+def fetchData(number): #edit the url's train_number with number
+    url='http://indianrailapi.com/api/v2/TrainSchedule/apikey/<apikey>/TrainNumber/{}'.format(number)
+    data=requests.get(url)
+    data=data.json
+    return(data)
+
 sg.FlexForm("Check your train's route")
 
-def trainSchedule():
-        train_number=input("Enter the train number")
-        fetchData(train_number)
-
-def fetchData(self,url):
-    data=requests.get(url)
-
-    data=data.json
-
-    print(data)
-
-
-# Define the window's contents
+# Layout-1
 layout = [[sg.Text("""How would you like to proceed?
         Enter 1 to check live train status.
         Enter 2 to check PNR.
@@ -26,47 +24,43 @@ layout = [[sg.Text("""How would you like to proceed?
           [sg.Submit(), sg.Cancel()]
         ]
 
-# Create the window
 window = sg.Window('Check your train', layout)
 
-# Display and interact with the Window using an Event Loop
 while True:
     event, values = window.read()
-    # See if user wants to quit or window was closed
     if event == sg.WINDOW_CLOSED or event == 'Cancel':
         break
-    # Output a message to the window
     else:
-        # print(values)
-        if values['-INPUT-']=='1':
-            window['-OUTPUT-'].update("Live Status") 
-        elif values['-INPUT-']=='2':
-            window['-OUTPUT-'].update('PNR')
-        else:
-            # Define the window's contents
-            layout = [[sg.Text("""Enter the train number""")],
+        #Layout-2
+        layout = [[sg.Text("""Enter the train number""")],
+                
+                [sg.Input(key='-INPUT-')],
+                [sg.Text(size=(40,1), key='-OUTPUT-')],
+                [sg.Submit(), sg.Cancel()]
+                ]
+
+        window = sg.Window('Train Number', layout)
+
+        while True:
+            event, number = window.read()
+            if event == sg.WINDOW_CLOSED or event == 'Cancel':
+                break
+            else:
+                if values['-INPUT-']=='1':
+                    window['-OUTPUT-'].update("Live Status") 
                     
-                    [sg.Input(key='-INPUT-')],
-                    [sg.Text(size=(40,1), key='-OUTPUT-')],
-                    [sg.Submit(), sg.Cancel()]
-                    ]
-
-            # Create the window
-            window = sg.Window('Route Details', layout)
-
-            # Display and interact with the Window using an Event Loop
-            while True:
-                event, values = window.read()
-                # See if user wants to quit or window was closed
-                if event == sg.WINDOW_CLOSED or event == 'Cancel':
-                    break
-                # Output a message to the window
+                elif values['-INPUT-']=='2':
+                    window['-OUTPUT-'].update('PNR')
                 else:
-                    #fetchData('-INPUT-')
-                    window['-OUTPUT-'].update('Route')
+                    res=fetchData(number['-INPUT-'])
+                    window['-OUTPUT-'].update(res)
+                    window['-OUTPUT-'].update('Route: '+res)
 
-            # Finish up by removing from the screen
-            window.close()
+
+        # Finish up by removing from the screen
+        #Layout-2
+        window.close()
 
 # Finish up by removing from the screen
+# Layout-1
 window.close()
