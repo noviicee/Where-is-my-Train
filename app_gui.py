@@ -1,11 +1,11 @@
 import requests
 import PySimpleGUI as sg
 
-sg.FlexForm('Check your train')
+sg.FlexForm("Check your train's route")
 
-def trainSchedule(self):
+def trainSchedule():
         train_number=input("Enter the train number")
-        self.fetchData(train_number)
+        fetchData(train_number)
 
 def fetchData(self,url):
     data=requests.get(url)
@@ -43,7 +43,30 @@ while True:
         elif values['-INPUT-']=='2':
             window['-OUTPUT-'].update('PNR')
         else:
-            trainSchedule()
+            # Define the window's contents
+            layout = [[sg.Text("""Enter the train number""")],
+                    
+                    [sg.Input(key='-INPUT-')],
+                    [sg.Text(size=(40,1), key='-OUTPUT-')],
+                    [sg.Submit(), sg.Cancel()]
+                    ]
+
+            # Create the window
+            window = sg.Window('Route Details', layout)
+
+            # Display and interact with the Window using an Event Loop
+            while True:
+                event, values = window.read()
+                # See if user wants to quit or window was closed
+                if event == sg.WINDOW_CLOSED or event == 'Cancel':
+                    break
+                # Output a message to the window
+                else:
+                    #fetchData('-INPUT-')
+                    window['-OUTPUT-'].update('Route')
+
+            # Finish up by removing from the screen
+            window.close()
 
 # Finish up by removing from the screen
 window.close()
