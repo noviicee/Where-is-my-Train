@@ -36,15 +36,20 @@ Current Status:
   - find the PNR number
   - show the route of the trains
 
-## References:
+## References
 
 - [IndianRailAPI](https://indianrailapi.com/api-collection) for APIs
 - [Python GUI Cookbokk](https://pysimplegui.readthedocs.io/en/latest/cookbook/) for adding GUI
 
-## Disclaimer:
+## Disclaimer
 
 Due to the ongoing pandemic in India, the railways are not in function, and hence it might be possible that some of the APIs get down at some points.
 
-## Created by:
+## Created by
 
 [Anamika](https://github.com/noviicee)
+
+## Further
+
+- Working on creating a better and smooth GUI for the application.
+- Working on enhancing the scope of the application.
