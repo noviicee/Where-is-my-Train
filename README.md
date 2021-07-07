@@ -39,7 +39,7 @@ Current Status:
 ## References
 
 - [IndianRailAPI](https://indianrailapi.com/api-collection) for APIs
-- [Python GUI Cookbokk](https://pysimplegui.readthedocs.io/en/latest/cookbook/) for adding GUI
+- [Python GUI Cookbook](https://pysimplegui.readthedocs.io/en/latest/cookbook/) for adding GUI
 
 ## Disclaimer
 
