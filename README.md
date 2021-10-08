@@ -30,16 +30,16 @@ Just run the [app.py](app.py) file and you are ready to find the status of your 
 
 Current Status:
 
-- The app is supported only for finding the status of Indian trains.
-- The app supports three features:
-  - show the live status of the trains
-  - find the PNR number
-  - show the route of the trains
+* The app is supported only for finding the status of Indian trains.
+* The app supports three features:
+  * show the live status of the trains
+  * find the PNR number
+  * show the route of the trains
 
 ## References
 
-- [IndianRailAPI](https://indianrailapi.com/api-collection) for APIs
-- [Python GUI Cookbook](https://pysimplegui.readthedocs.io/en/latest/cookbook/) for adding GUI
+* [IndianRailAPI](https://indianrailapi.com/api-collection) for APIs
+* [Python GUI Cookbook](https://pysimplegui.readthedocs.io/en/latest/cookbook/) for adding GUI
 
 ## Disclaimer
 
@@ -51,5 +51,5 @@ Due to the ongoing pandemic in India, the railways are not in function, and henc
 
 ## Further
 
-- Working on creating a better and smooth GUI for the application.
-- Working on enhancing the scope of the application.
+* Working on creating a better and smooth GUI for the application.
+* Working on enhancing the scope of the application.
